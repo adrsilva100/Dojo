@@ -7,7 +7,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Index</title>
-		<link type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.css" rel="stylesheet" />
+		<link type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div class="col-md-3"></div>
@@ -20,7 +20,7 @@
 					  <div class="form-group">
 					    <label for="file" class="col-sm-2 control-label">Arquivo</label>
 					    <div class="col-sm-10">
-					      <input type="file" id="file" name="file" required="">
+					      <input type="file" id="file" name="file" required="" accept=".txt">
 					    </div>
 					  </div>
 					  <div class="form-group">
@@ -32,7 +32,8 @@
                   </div><!--/panel-body-->
               </div><!--/panel-->                     
           	</div>
+          	${mensagem}
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 	</body>
 </html>

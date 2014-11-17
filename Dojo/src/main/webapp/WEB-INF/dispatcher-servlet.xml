@@ -18,6 +18,7 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<context:component-scan base-package="br.com.teste.dojo.controller" />
+	<context:component-scan base-package="br.com.teste.dojo.service" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

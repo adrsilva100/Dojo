@@ -6,22 +6,27 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.teste.dojo.service.ProcessarArquivoService;
 import br.com.teste.dojo.vo.PartidaVO;
 
 @Controller
 public class LerArquivoController {
+	
+	@Autowired ProcessarArquivoService processar;
+	
 	@RequestMapping(value="/processarArquivo", method=RequestMethod.POST)
-	public String processarArquivoLog(Model model,HttpServletRequest request) throws IOException {
-		ProcessarArquivoService processar = new ProcessarArquivoService();
-
+	public String processarArquivoLog(Model model,HttpServletRequest request
+			, final RedirectAttributes redirectAttrs) throws IOException {
+		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		MultipartFile multipartFile = multipartRequest.getFile("file");
 
@@ -32,6 +37,7 @@ public class LerArquivoController {
 			model.addAttribute("listaPartida", listaPartidas);
 			return "processar";
 		}else{
+			redirectAttrs.addFlashAttribute("mensagem", "teste");
 			return "redirect:index.jsp";
 		}
 	}

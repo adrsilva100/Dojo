@@ -4,17 +4,21 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.com.teste.dojo.enums.Acao;
-import br.com.teste.dojo.util.UtilData;
 import br.com.teste.dojo.vo.ArmaVO;
 import br.com.teste.dojo.vo.JogadorVO;
 import br.com.teste.dojo.vo.PartidaDetalheVO;
 import br.com.teste.dojo.vo.PartidaVO;
 
+@Service
 public class ProcessarArquivoService {
 	
 	private PartidaVO partidaVO;
@@ -23,6 +27,7 @@ public class ProcessarArquivoService {
 	public List<PartidaVO> processarArquivo(File arquivoLog) throws IOException{
 		BufferedReader bfReader =  null;
 		
+		listaPartidas.clear();
 		try{
 			bfReader = new BufferedReader(new FileReader(arquivoLog));
 			String linhaArquivo = bfReader.readLine();
@@ -45,10 +50,9 @@ public class ProcessarArquivoService {
 		if(linhaArquivo.contains("<WORLD>")){
 			return false;
 		}
-		
 		int indexAcao = linhaArquivo.indexOf("-");
         String dataNaoFormatada = linhaArquivo.substring(0, indexAcao);
-        Date data = UtilData.formatarStringParaData(dataNaoFormatada);
+        Date data = formatarStringParaData(dataNaoFormatada);
         String acao = linhaArquivo.substring(indexAcao, linhaArquivo.length());
 		
         if(acao.contains(Acao.HAS_STARTED.getLabel())){
@@ -113,5 +117,17 @@ public class ProcessarArquivoService {
 
 	public List<PartidaVO> getListaPartidas() {
 		return listaPartidas;
+	}
+	
+	private static Date formatarStringParaData(String data){
+		Date dataFormatada = new Date();
+		SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		
+		try {
+			dataFormatada = formatoData.parse(data);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return dataFormatada;
 	}
 }
