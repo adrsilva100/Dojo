@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Resultado</title>
     <!-- Bootstrap -->
-	<link type="text/css" href="<%=request.getContextPath() %>/resources/css/bootstrap.css" rel="stylesheet"/>
+	<link type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
   </head>
   <body>
  	<div class="col-md-3"></div>
@@ -40,7 +40,7 @@
 								<td>${detalhe.getArmaQueMaisMatouPeloJogador()}</td>
 								<td>
 									<c:if test="${detalhe.qtdeMorte == 0}">
-										<img src="<%=request.getContextPath() %>/resources/img/invensivel.JPG"
+										<img src="${pageContext.request.contextPath}/resources/img/invensivel.JPG"
 											style="width: 30px;margin-left: 10px;"/>
 									</c:if>
 								</td>
@@ -51,11 +51,11 @@
 			</div>
 	    </c:forEach>
 	    <h3>Legenda:</h3>
-	    <img src="<%=request.getContextPath() %>/resources/img/invensivel.JPG" style="width: 30px;"/>:(Terminou a partida sem morrer)
+	    <img src="${pageContext.request.contextPath}/resources/img/invensivel.JPG" style="width: 30px;"/>:(Terminou a partida sem morrer)
 	    <br/><br/>
 	   	<a href="index.jsp" class="btn btn-primary">Voltar</a>
 	</div>    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="<%=request.getContextPath() %>/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
   </body>
 </html>

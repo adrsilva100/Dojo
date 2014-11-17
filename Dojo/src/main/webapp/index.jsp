@@ -32,7 +32,6 @@
                   </div><!--/panel-body-->
               </div><!--/panel-->                     
           	</div>
-          	${mensagem}
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 	</body>
