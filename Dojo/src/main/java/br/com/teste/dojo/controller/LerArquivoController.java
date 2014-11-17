@@ -37,7 +37,6 @@ public class LerArquivoController {
 			model.addAttribute("listaPartida", listaPartidas);
 			return "processar";
 		}else{
-			redirectAttrs.addFlashAttribute("mensagem", "teste");
 			return "redirect:index.jsp";
 		}
 	}
