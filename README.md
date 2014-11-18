@@ -3,9 +3,9 @@ Dojo
 
 Tecnologias / Frameworks:
 
-Spring Core
-Spring MVC
-Maven
+Spring Core /
+Spring MVC /
+Maven /
 Bootstrap
 
 Como executar o projeto:
